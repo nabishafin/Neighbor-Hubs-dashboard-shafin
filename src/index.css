@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Libertinus+Mono&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,4 +118,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+.libertinus {
+  font-family: "Libertinus Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }

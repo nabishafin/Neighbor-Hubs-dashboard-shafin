@@ -24,15 +24,13 @@ const SignInPage = () => {
         <div className="bg-[#FCEED4]">
           <div className="flex flex-col lg:flex-row min-h-[600px] justify-center items-center">
             {/* Left Side - Logo and Welcome */}
-            <div className="flex-1 border-r-[1px] pb-10 border-black hidden md:block">
-              <div className="text-center ">
+            <div className="flex-1 lg:border-r-[1px] lg:border-black w-full lg:w-auto mb-8 lg:mb-0">
+              <div className="text-center px-4 lg:px-8 pb-10">
                 {/* Logo Container */}
-                <div className="hidden lg:flex items-center justify-center flex-1  border-black">
-                  <img src={logo} alt="" />
-                </div>
+                <img src={logo} className="" alt="Neighbor Hubs Logo"></img>
                 {/* Brand Name */}
-                <div className="">
-                  <p className="text-lg text-teal-600 font-medium libertinus m-0 p-0">
+                <div className="mb-4 lg:mb-0">
+                  <p className="text-base sm:text-lg lg:text-xl text-teal-600 font-medium m-0 p-0">
                     Welcome to Neighbor Hubs
                   </p>
                 </div>
@@ -40,20 +38,23 @@ const SignInPage = () => {
             </div>
 
             {/* Right Side - Sign In Form */}
-            <div className="flex-1 flex items-center justify-center p-8 lg:p-12">
+            <div className="flex-1 flex items-center justify-center w-full lg:w-auto px-4 sm:px-6 lg:px-12">
               <div className="w-full max-w-md space-y-6">
                 {/* Form Header */}
-                <div className="text-center space-y-2">
-                  <h2 className="text-2xl text-start lg:text-3xl font-bold text-[#181F81]">
+                <div className="text-center lg:text-left space-y-2">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#181F81]">
                     Sign to Account!
                   </h2>
-                  <p className="text-gray-600 text-start">
+                  <p className="text-sm sm:text-base text-gray-600">
                     Please enter your email and password to continue.
                   </p>
                 </div>
 
                 {/* Sign In Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4 sm:space-y-5"
+                >
                   {/* Email Field */}
                   <div className="space-y-2">
                     <Label
@@ -68,7 +69,7 @@ const SignInPage = () => {
                       placeholder="smith.mail@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent text-sm sm:text-base"
                       required
                     />
                   </div>
@@ -88,25 +89,25 @@ const SignInPage = () => {
                         placeholder="••••••••"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-4 py-3 pr-12 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-10 sm:pr-12 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent text-sm sm:text-base"
                         required
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                        className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 p-1"
                       >
                         {showPassword ? (
-                          <EyeOff size={20} />
+                          <EyeOff size={18} className="sm:w-5 sm:h-5" />
                         ) : (
-                          <Eye size={20} />
+                          <Eye size={18} className="sm:w-5 sm:h-5" />
                         )}
                       </button>
                     </div>
                   </div>
 
                   {/* Remember Password and Forgot Password */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
                     <div className="flex items-center space-x-2">
                       <Checkbox
                         id="remember"
@@ -122,7 +123,10 @@ const SignInPage = () => {
                         Remember password
                       </Label>
                     </div>
-                    <button type="button" className="text-sm text-[#181F81]">
+                    <button
+                      type="button"
+                      className="text-sm text-[#181F81] hover:underline text-left sm:text-right"
+                    >
                       Forgot password?
                     </button>
                   </div>
@@ -130,11 +134,14 @@ const SignInPage = () => {
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    className="w-full bg-[#D46A6A] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#D46A6A]  shadow-lg"
+                    className="w-full bg-[#D46A6A] text-white font-semibold py-2 sm:py-3 px-6 rounded-lg hover:bg-[#D46A6A]/90 shadow-lg text-sm sm:text-base transition-colors"
                   >
                     Log In
                   </Button>
                 </form>
+
+                {/* Mobile-only additional spacing */}
+                <div className="h-4 sm:hidden"></div>
               </div>
             </div>
           </div>

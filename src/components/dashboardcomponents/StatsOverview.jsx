@@ -3,7 +3,7 @@ import { Users, Globe, DollarSign, Coins } from "lucide-react";
 // StatsOverview component
 function StatsOverview() {
   return (
-    <div className="bg-[#fdf5e6]   p-4 rounded-lg shadow-sm flex flex-col md:flex-row justify-around items-center text-center space-y-4 md:space-y-0 md:space-x-4">
+    <div className="bg-[#FCEED3]   p-4 rounded-lg shadow-sm flex flex-col md:flex-row justify-around items-center text-center space-y-4 md:space-y-0 md:space-x-4">
       {/* Total Client */}
       <div className="flex flex-col items-center flex-1 min-w-0 px-4 py-2 md:border-r md:border-[#5EAAA8]">
         <h2 className="text-lg font-semibold text-neutral-800 mb-2">

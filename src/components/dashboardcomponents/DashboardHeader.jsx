@@ -20,7 +20,7 @@ export default function DashboardHeader() {
   };
 
   return (
-    <header className="bg-[#017783] text-white px-8 py-4 ">
+    <header className="bg-[#FCEED3] text-[#D46A6A] px-8 py-4 ">
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
           {/* Mobile Sidebar Trigger */}
@@ -31,12 +31,9 @@ export default function DashboardHeader() {
           <div>
             <h1 className="text-lg sm:text-xl font-semibold">
               <span className="hidden sm:inline font-bold text-3xl">
-                Well Come to Dance Attix!!!
+                Welcome back!
               </span>
             </h1>
-            <h2 className="mt-2 text-sm">
-              Buy. Sell. Refresh your style, effortlessly today. !!!
-            </h2>
           </div>
         </div>
 

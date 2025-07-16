@@ -10,13 +10,19 @@ import {
   ChevronRight,
   ChevronDown,
   Menu,
-  Music,
+  User,
+  DollarSign,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button"; // Or replace with your own Button
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"; // Or use Dialog/Drawer if needed
+import logo from "../../assets/logo.png";
+
+// Utility: classNames
+function cn(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 // Sidebar Items
 const sidebarItems = [
@@ -26,9 +32,19 @@ const sidebarItems = [
     icon: LayoutDashboard,
   },
   {
-    title: "Users",
-    href: "/dashboard/users",
+    title: "Client",
+    href: "/dashboard/clients",
+    icon: User,
+  },
+  {
+    title: "Freelancer",
+    href: "/dashboard/freelancer",
     icon: Users2,
+  },
+  {
+    title: "Earning",
+    href: "/dashboard/earning",
+    icon: DollarSign,
   },
   {
     title: "Settings",
@@ -57,29 +73,32 @@ const sidebarItems = [
       },
     ],
   },
-  {
-    title: "Logout",
-    href: "/logout",
-    icon: LogOut,
-  },
 ];
 
 // Logo Section
-function LogoSection({ name = "Name", title = "Title" }) {
+function LogoSection() {
   return (
     <Link to="/dashboard">
       <div className="flex items-center p-6 flex-col justify-center">
-        <img src="/logo.svg" alt="logo" className="w-10 h-10" />
-        <h1 className="text-2xl font-bold">{name}</h1>
-        <p className="text-sm">{title}</p>
+        <div className="relative  mb-2">
+          <img
+            src={logo}
+            alt="NeighborHubs Logo"
+            className="object-contain w-full h-full"
+          />
+        </div>
+        <div className="text-center">
+          <h2 className="text-lg font-bold text-gray-800">NeighborHubs</h2>
+        </div>
       </div>
     </Link>
   );
 }
 
-// Sidebar Navigation List
+// Sidebar Navigation
 function SidebarNav({ onLinkClick }) {
   const location = useLocation();
+  const pathname = location.pathname;
   const [expandedItems, setExpandedItems] = useState([]);
 
   const toggleExpanded = (href) =>
@@ -90,10 +109,13 @@ function SidebarNav({ onLinkClick }) {
   const isExpanded = (href) => expandedItems.includes(href);
 
   return (
-    <nav className="flex-1 p-4 overflow-y-auto">
-      <ul className="space-y-2">
+    <nav className="flex-1 px-4 overflow-y-auto">
+      <ul className="space-y-1">
         {sidebarItems.map((item) => {
-          const isActive = location.pathname === item.href;
+          const isActive = pathname === item.href;
+          const isChildActive = item.children?.some(
+            (child) => pathname === child.href
+          );
           const hasChildren = !!item.children?.length;
           const expanded = isExpanded(item.href);
 
@@ -105,14 +127,16 @@ function SidebarNav({ onLinkClick }) {
                     variant="ghost"
                     onClick={() => toggleExpanded(item.href)}
                     className={cn(
-                      "w-full justify-start gap-3 h-10",
-                      isActive
-                        ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      "w-full justify-between gap-3 h-12 rounded-lg mb-1",
+                      isActive || isChildActive
+                        ? "bg-gradient-to-r from-[#D46A6A] to-white text-white"
+                        : "text-gray-700 hover:bg-orange-50 hover:text-orange-800"
                     )}
                   >
-                    <item.icon className="h-4 w-4" />
-                    <span className="flex-1 text-left">{item.title}</span>
+                    <div className="flex items-center gap-3">
+                      <item.icon className="h-5 w-5" />
+                      <span className="font-medium">{item.title}</span>
+                    </div>
                     {expanded ? (
                       <ChevronDown className="h-4 w-4" />
                     ) : (
@@ -125,22 +149,22 @@ function SidebarNav({ onLinkClick }) {
                       expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                     )}
                   >
-                    <ul className="space-y-1 mt-2">
+                    <ul className="space-y-1 mt-1">
                       {item.children.map((child) => {
-                        const isChildActive = location.pathname === child.href;
+                        const isChildActive = pathname === child.href;
                         return (
                           <li key={child.href}>
                             <Link to={child.href} onClick={onLinkClick}>
                               <Button
                                 variant="ghost"
                                 className={cn(
-                                  "w-full justify-start gap-3 h-9 text-sm",
+                                  "w-full justify-start gap-3 h-10 text-sm rounded-lg",
                                   isChildActive
-                                    ? "bg-white text-[#017783]"
-                                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                    ? "bg-gradient-to-r from-[#D46A6A] to-white text-white"
+                                    : "text-gray-600 hover:bg-orange-50 hover:text-orange-800"
                                 )}
                               >
-                                <child.icon className="h-3 w-3" />
+                                <child.icon className="h-4 w-4" />
                                 {child.title}
                               </Button>
                             </Link>
@@ -155,14 +179,14 @@ function SidebarNav({ onLinkClick }) {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "w-full justify-start gap-3 h-10",
+                      "w-full justify-start gap-3 h-12 rounded-lg mb-1",
                       isActive
-                        ? "bg-white text-[#017783]"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                        ? "bg-gradient-to-r from-[#D46A6A] to-white text-white"
+                        : "text-gray-700 hover:bg-orange-50 hover:text-orange-800"
                     )}
                   >
-                    <item.icon className="h-4 w-4" />
-                    {item.title}
+                    <item.icon className="h-5 w-5" />
+                    <span className="font-medium">{item.title}</span>
                   </Button>
                 </Link>
               )}
@@ -170,6 +194,17 @@ function SidebarNav({ onLinkClick }) {
           );
         })}
       </ul>
+
+      {/* Log Out Button */}
+      <div className="mt-auto ">
+        <Button
+          variant="ghost"
+          className="w-full justify-start gap-3 h-12 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700"
+        >
+          <LogOut className="h-5 w-5" />
+          <span className="font-medium">Log Out</span>
+        </Button>
+      </div>
     </nav>
   );
 }
@@ -177,7 +212,7 @@ function SidebarNav({ onLinkClick }) {
 // Desktop Sidebar
 function DesktopSidebar() {
   return (
-    <div className="hidden lg:flex h-full w-64 flex-col bg-[#E8E8E8] border-r border-gray-200">
+    <div className="hidden lg:flex h-full w-64 flex-col bg-[#FCEED3]">
       <LogoSection />
       <SidebarNav />
     </div>
@@ -194,27 +229,14 @@ function MobileSidebar() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden text-white hover:bg-teal-700"
+          className="lg:hidden text-gray-700 hover:bg-orange-100"
         >
           <Menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-64 p-0">
-        <div className="flex h-full flex-col bg-white">
-          {/* Mobile Logo */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <div className="flex items-center gap-2">
-              <div className="bg-teal-600 p-2 rounded-lg">
-                <Music className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900">
-                  Dance Affair
-                </h2>
-                <p className="text-sm text-gray-500">Admin Panel</p>
-              </div>
-            </div>
-          </div>
+        <div className="flex h-full flex-col bg-gradient-to-b from-orange-50 to-orange-100">
+          <LogoSection />
           <SidebarNav onLinkClick={() => setOpen(false)} />
         </div>
       </SheetContent>
@@ -222,7 +244,7 @@ function MobileSidebar() {
   );
 }
 
-// Export Combined Sidebar
+// Final Export
 export default function DashboardSidebar() {
   return (
     <>

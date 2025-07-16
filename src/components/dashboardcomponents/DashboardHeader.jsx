@@ -8,37 +8,44 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Bell, Search, LogOut, User, Settings } from "lucide-react";
+import { Bell, LogOut, User, Settings } from "lucide-react"; // Removed Search as it wasn't used
 import { Link, useNavigate } from "react-router-dom";
-import DashboardSidebar from "./DashboardSidebar";
+import { MobileSidebar } from "./DashboardSidebar"; // Import MobileSidebar
 
 export default function DashboardHeader() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     navigate("/signin");
+    // You might also want to clear user session/token here
   };
 
   return (
-    <header className="bg-[#FCEED3] text-[#D46A6A] px-8 py-4 ">
+    <header className="bg-[#FCEED3] text-[#D46A6A] px-4 py-4 sm:px-8 sm:py-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center justify-center gap-4">
-          {/* Mobile Sidebar Trigger */}
+        {/* Left section of the header */}
+        <div className="flex items-center gap-4">
+          {/* Mobile Sidebar Trigger (Burger Button) - Visible only on small screens */}
           <div className="lg:hidden">
-            <DashboardSidebar />
+            <MobileSidebar />
           </div>
 
-          <div>
-            <h1 className="text-lg sm:text-xl font-semibold">
-              <span className="hidden sm:inline font-bold text-3xl">
-                Welcome back!
-              </span>
-            </h1>
-          </div>
+          {/* Welcome back! text - Hidden on small screens if MobileSidebar is present,
+              or always visible depending on desired layout */}
+          <h1 className="text-lg sm:text-xl font-semibold">
+            <span className="hidden sm:inline font-bold text-3xl">
+              Welcome back!
+            </span>
+            {/* Show a simpler greeting on mobile if needed, or rely on desktop only */}
+            <span className="inline sm:hidden font-semibold text-xl text-gray-800">
+              Hello!
+            </span>
+          </h1>
         </div>
 
-        <div className="flex items-center justify-center gap-2 sm:gap-4">
-          {/* Notifications */}
+        {/* Right section of the header */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          {/* Notifications Button */}
           <Link to={"/dashboard/notificatons"}>
             <Button
               variant="ghost"
@@ -52,48 +59,41 @@ export default function DashboardHeader() {
             </Button>
           </Link>
 
-          {/* User Menu */}
+          {/* User Dropdown Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="relative h-12 w-12 sm:h-10 sm:w-10 rounded-full"
+                size="icon"
+                className="rounded-full h-10 w-10"
               >
-                <Avatar className="h-12 w-12 sm:h-10 sm:w-10">
+                <Avatar>
                   <AvatarImage
-                    src="/placeholder.svg?height=40&width=40"
-                    alt="User"
-                  />
-                  <AvatarFallback className="bg-black text-white text-xs sm:text-sm">
-                    DA
-                  </AvatarFallback>
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />{" "}
+                  {/* Replace with actual user image */}
+                  <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
-                    Dance Admin
-                  </p>
-                  <p className="text-xs leading-none text-muted-foreground">
-                    admin@danceaffair.com
-                  </p>
-                </div>
-              </DropdownMenuLabel>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <User className="mr-2 h-8 w-8" />
+              <DropdownMenuItem
+                onClick={() => navigate("/dashboard/settings/profile")}
+              >
+                <User className="mr-2 h-4 w-4" />
                 <span>Profile</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/dashboard/settings")}>
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogout}>
                 <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
+                <span>Log Out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

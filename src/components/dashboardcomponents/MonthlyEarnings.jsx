@@ -65,12 +65,41 @@ const Earnings = () => {
     : earningsData;
 
   return (
-    <div>
-      <div className="p-5 text-white bg-[#D46A6A]">Earning</div>
-      <div className="w-full rounded-none border-none shadow-none bg-transparent">
-        <div className="flex justify-between p-4">
-          <div className="text-black font-medium"></div>
-          <div className="flex items-center gap-4">
+    <div
+      className="select-none outline-none focus:outline-none"
+      style={{
+        outline: "none",
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        MozUserSelect: "none",
+        msUserSelect: "none",
+      }}
+      tabIndex={-1}
+      onFocus={(e) => e.preventDefault()}
+      onMouseDown={(e) => e.preventDefault()}
+    >
+      <div
+        className="p-5 text-white bg-[#D46A6A] outline-none focus:outline-none"
+        tabIndex={-1}
+      >
+        Earning
+      </div>
+      <div
+        className="w-full rounded-none border-none shadow-none outline-none focus:outline-none"
+        tabIndex={-1}
+      >
+        <div
+          className="flex justify-between p-4 outline-none focus:outline-none"
+          tabIndex={-1}
+        >
+          <div
+            className="text-black font-medium outline-none focus:outline-none"
+            tabIndex={-1}
+          ></div>
+          <div
+            className="flex items-center gap-4 outline-none focus:outline-none"
+            tabIndex={-1}
+          >
             <input
               type="date"
               value={selectedDate ? formatDate(selectedDate) : ""}
@@ -81,12 +110,40 @@ const Earnings = () => {
               }
               className="px-2 py-1 text-sm bg-white text-black rounded outline-none ring-0 border-none shadow-none focus:outline-none focus:ring-0 focus:border-none focus:shadow-none active:outline-none active:ring-0 active:border-none active:shadow-none"
               placeholder="YYYY/MM/DD"
-              style={{ outline: "none", boxShadow: "none" }}
+              style={{
+                outline: "none",
+                boxShadow: "none",
+                border: "none",
+              }}
             />
           </div>
         </div>
-        <div className="p-4 shadow-none border-none">
-          <div className="h-120">
+        <div
+          className="p-4 shadow-none border-none outline-none focus:outline-none"
+          style={{
+            outline: "none",
+            userSelect: "none",
+            WebkitUserSelect: "none",
+            MozUserSelect: "none",
+            msUserSelect: "none",
+          }}
+          tabIndex={-1}
+          onFocus={(e) => e.preventDefault()}
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          <div
+            className="h-120 outline-none focus:outline-none"
+            style={{
+              outline: "none",
+              userSelect: "none",
+              WebkitUserSelect: "none",
+              MozUserSelect: "none",
+              msUserSelect: "none",
+            }}
+            tabIndex={-1}
+            onFocus={(e) => e.preventDefault()}
+            onMouseDown={(e) => e.preventDefault()}
+          >
             <ResponsiveContainer width="100%" height={500}>
               <BarChart
                 data={filteredData}

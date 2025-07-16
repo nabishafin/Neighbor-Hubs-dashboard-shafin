@@ -9,14 +9,14 @@ import {
   LogOut,
   ChevronRight,
   ChevronDown,
-  Menu,
+  Menu, // Keep Menu icon for the SheetTrigger
   User,
   DollarSign,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Button } from "@/components/ui/button"; // Or replace with your own Button
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"; // Or use Dialog/Drawer if needed
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "../../assets/logo.png";
 
 // Utility: classNames
@@ -24,7 +24,7 @@ function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-// Sidebar Items
+// Sidebar Items (remains unchanged)
 const sidebarItems = [
   {
     title: "Dashboard",
@@ -75,12 +75,12 @@ const sidebarItems = [
   },
 ];
 
-// Logo Section
+// Logo Section (remains unchanged)
 function LogoSection() {
   return (
     <Link to="/dashboard">
       <div className="flex items-center p-6 flex-col justify-center">
-        <div className="relative  mb-2">
+        <div className="relative mb-2">
           <img
             src={logo}
             alt="NeighborHubs Logo"
@@ -95,7 +95,7 @@ function LogoSection() {
   );
 }
 
-// Sidebar Navigation
+// Sidebar Navigation (will receive onLinkClick prop)
 function SidebarNav({ onLinkClick }) {
   const location = useLocation();
   const pathname = location.pathname;
@@ -196,7 +196,7 @@ function SidebarNav({ onLinkClick }) {
       </ul>
 
       {/* Log Out Button */}
-      <div className="mt-auto ">
+      <div className="mt-auto pt-4">
         <Button
           variant="ghost"
           className="w-full justify-start gap-3 h-12 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700"
@@ -210,46 +210,41 @@ function SidebarNav({ onLinkClick }) {
 }
 
 // Desktop Sidebar
-function DesktopSidebar() {
+export function DesktopSidebar() {
   return (
-    <div className="hidden lg:flex h-full w-64 flex-col bg-[#FCEED3]">
+    <div className="hidden lg:flex h-screen w-64 flex-col bg-[#FCEED3] sticky top-0 overflow-y-auto">
       <LogoSection />
       <SidebarNav />
     </div>
   );
 }
 
-// Mobile Sidebar
-function MobileSidebar() {
-  const [open, setOpen] = useState(false);
+// MobileSidebar component - Exported for use in DashboardHeader
+export function MobileSidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const closeSheet = () => setIsOpen(false);
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="ghost"
+          variant="default"
           size="icon"
-          className="lg:hidden text-gray-700 hover:bg-orange-100"
+          className="h-10 w-10 rounded-full bg-black  text-white shadow-lg transition-all duration-200 ease-in-out"
         >
           <Menu className="h-5 w-5" />
+          <span className="sr-only">Open Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-64 p-0">
-        <div className="flex h-full flex-col bg-gradient-to-b from-orange-50 to-orange-100">
-          <LogoSection />
-          <SidebarNav onLinkClick={() => setOpen(false)} />
-        </div>
+      <SheetContent side="left" className="w-64 p-0 flex flex-col bg-[#FCEED3]">
+        <LogoSection />
+        <SidebarNav onLinkClick={closeSheet} />
       </SheetContent>
     </Sheet>
   );
 }
 
-// Final Export
+// Default export for DashboardSidebar component (now only handles DesktopSidebar)
 export default function DashboardSidebar() {
-  return (
-    <>
-      <DesktopSidebar />
-      <MobileSidebar />
-    </>
-  );
+  return <DesktopSidebar />;
 }

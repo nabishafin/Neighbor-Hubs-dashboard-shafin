@@ -13,14 +13,14 @@ const AboutUs = () => {
   return (
     <div className="font-sans pr-5">
       {/* Header */}
-      <h2 className="text-xl sm:text-2xl font-bold mb-5 text-white bg-[#017783] p-5 rounded-md">
+      <h2 className="text-xl sm:text-2xl font-bold mb-5 text-white bg-[#D46A6A] p-5 rounded-md">
         About Us
       </h2>
 
       {/* Edit Button */}
       <div className="flex justify-end p-4">
         <Link to="/dashboard/settings/editabout">
-          <Button className="bg-[#017783] hover:bg-[#015a63] text-white rounded-full flex items-center space-x-1 shadow-md">
+          <Button className="bg-[#D46A6A] hover:bg-[#D46A6A] text-white rounded-full flex items-center space-x-1 shadow-md">
             <Edit className="h-4 w-4" />
             <span>Edit</span>
           </Button>

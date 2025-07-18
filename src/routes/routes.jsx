@@ -11,6 +11,7 @@ import ResetPassword from "../pages/auth/ResetPassword";
 
 // Dashboard Pages
 import DashboardOverview from "../pages/dashboardpages/DashboardOverview/DashboardOverview";
+import AllClients from "../pages/dashboardpages/client/AllClients";
 import Profile from "../pages/dashboardpages/personalinformation/Profile";
 import EditProfile from "../pages/dashboardpages/personalinformation/Editprofile";
 import TermsAndConditions from "../pages/dashboardpages/terms/TermsAndConditions";
@@ -20,7 +21,8 @@ import EditPrivacyPolicy from "../pages/dashboardpages/privacypolicy/EditPrivacy
 import AboutUs from "../pages/dashboardpages/about/AboutUs";
 import EditAbout from "../pages/dashboardpages/about/EditAbout";
 import AllNotifications from "../pages/dashboardpages/notification/AllNotifications";
-import AllClients from "../pages/dashboardpages/client/AllClients";
+import Freelancer from "../pages/dashboardpages/Freelancer/Freelancer";
+import Earning from "../pages/dashboardpages/Earning/Earning";
 
 const routes = createBrowserRouter([
   {
@@ -50,6 +52,8 @@ const routes = createBrowserRouter([
       { index: true, element: <DashboardOverview /> },
       { path: "notificatons", element: <AllNotifications /> },
       { path: "clients", element: <AllClients /> },
+      { path: "freelancer", element: <Freelancer /> },
+      { path: "earning", element: <Earning /> },
 
       // Settings
       { path: "settings/profile", element: <Profile /> },

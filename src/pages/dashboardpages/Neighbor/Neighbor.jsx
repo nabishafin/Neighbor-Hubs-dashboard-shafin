@@ -248,19 +248,19 @@ const Neighbor = () => {
           <Table>
             <TableHeader>
               <TableRow className="bg-gray-50">
-                <TableHead className="font-semibold text-gray-700 text-center">
+                <TableHead className="font-semibold text-[#D46A6A] text-center">
                   Sl NO.
                 </TableHead>
-                <TableHead className="font-semibold text-gray-700 text-center">
+                <TableHead className="font-semibold text-[#D46A6A] text-center">
                   Name
                 </TableHead>
-                <TableHead className="font-semibold text-gray-700 text-center">
+                <TableHead className="font-semibold text-[#D46A6A] text-center">
                   Email
                 </TableHead>
-                <TableHead className="font-semibold text-gray-700 text-center">
+                <TableHead className="font-semibold text-[#D46A6A] text-center">
                   Joining Date
                 </TableHead>
-                <TableHead className="font-semibold text-gray-700 text-center">
+                <TableHead className="font-semibold text-[#D46A6A] text-center">
                   Action
                 </TableHead>
               </TableRow>

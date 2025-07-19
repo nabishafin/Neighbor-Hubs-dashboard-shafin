@@ -184,19 +184,19 @@ const FreelancerPage = () => {
             <table className="w-full">
               <thead className=" border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 font-semibold text-center text-md  text-[#D46A6A] uppercase tracking-wider">
                     SI NO.
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 font-semibold text-center text-md  text-[#D46A6A] uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 font-semibold text-center text-md  text-[#D46A6A] uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 font-semibold text-center text-md  text-[#D46A6A] uppercase tracking-wider">
                     Joining Date
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 font-semibold text-md  text-[#D46A6A] uppercase tracking-wider">
                     Action
                   </th>
                 </tr>

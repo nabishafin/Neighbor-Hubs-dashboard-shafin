@@ -187,22 +187,22 @@ const FreelancerEarningsPage = () => {
             <table className="w-full">
               <thead className="border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-md font-semi-bold text-[#D46A6A] uppercase tracking-wider">
                     SI NO.
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-md font-semi-bold text-[#D46A6A] uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-md font-semi-bold text-[#D46A6A] uppercase tracking-wider">
                     Amount
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-md font-semi-bold text-[#D46A6A] uppercase tracking-wider">
                     Profit
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-md font-semi-bold text-[#D46A6A] uppercase tracking-wider">
                     Payable
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-[#D46A6A] uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-md font-semi-bold text-[#D46A6A] uppercase tracking-wider">
                     Action
                   </th>
                 </tr>
@@ -210,7 +210,7 @@ const FreelancerEarningsPage = () => {
               <tbody className="divide-y divide-gray-200">
                 {paginatedFreelancers.map((freelancer) => (
                   <tr key={freelancer.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 text-center text-sm font-medium text-gray-900">
+                    <td className="px-6 py-4 text-center text-sm font-semi-bold text-gray-900">
                       {freelancer.id}
                     </td>
                     <td className="px-6 py-4 text-center text-sm text-gray-900">
@@ -225,9 +225,9 @@ const FreelancerEarningsPage = () => {
                     <td className="px-6 py-4 text-center text-sm text-gray-900">
                       ${freelancer.payable}
                     </td>
-                    <td className="px-6 py-4 text-center text-sm font-medium">
+                    <td className="px-6 py-4 text-center text-sm font-semi-bold">
                       {freelancer.status === "paid" ? (
-                        <span className="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-green-100 text-green-800">
+                        <span className="inline-flex items-center px-4 py-2 rounded-md text-sm font-semi-bold bg-green-100 text-green-800">
                           Paid
                         </span>
                       ) : (
@@ -235,7 +235,7 @@ const FreelancerEarningsPage = () => {
                           onClick={() =>
                             handlePaymentAction(freelancer.id, "pay")
                           }
-                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white hover:opacity-90 transition-opacity"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semi-bold rounded-md text-white hover:opacity-90 transition-opacity"
                           style={{ backgroundColor: "#D46A6A" }}
                         >
                           Pay Now
@@ -255,7 +255,7 @@ const FreelancerEarningsPage = () => {
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center px-3 py-2 text-sm font-semi-bold rounded-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Previous
@@ -280,7 +280,7 @@ const FreelancerEarningsPage = () => {
                   <button
                     key={pageNumber}
                     onClick={() => handlePageChange(pageNumber)}
-                    className={`inline-flex items-center px-3 py-2 text-sm font-medium rounded-md border ${
+                    className={`inline-flex items-center px-3 py-2 text-sm font-semi-bold rounded-md border ${
                       pageNumber === currentPage
                         ? "border-red-400 text-white shadow-sm"
                         : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
@@ -301,7 +301,7 @@ const FreelancerEarningsPage = () => {
                   <span className="px-2 py-2 text-sm text-gray-500">...</span>
                   <button
                     onClick={() => handlePageChange(totalPages)}
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
+                    className="inline-flex items-center px-3 py-2 text-sm font-semi-bold rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
                   >
                     {totalPages}
                   </button>
@@ -314,7 +314,7 @@ const FreelancerEarningsPage = () => {
                   handlePageChange(Math.min(totalPages, currentPage + 1))
                 }
                 disabled={currentPage === totalPages}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center px-3 py-2 text-sm font-semi-bold rounded-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next
                 <ChevronRight className="h-4 w-4 ml-1" />

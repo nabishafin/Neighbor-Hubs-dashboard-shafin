@@ -32,7 +32,7 @@ const sidebarItems = [
     icon: LayoutDashboard,
   },
   {
-    title: "Client",
+    title: "Neighbor",
     href: "/dashboard/clients",
     icon: User,
   },

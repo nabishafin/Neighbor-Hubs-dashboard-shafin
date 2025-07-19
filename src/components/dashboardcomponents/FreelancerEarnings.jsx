@@ -162,7 +162,7 @@ const FreelancerEarningsPage = () => {
     <div className="mt-5">
       <div className="mx-auto">
         {/* Header */}
-        <div className="p-6" style={{ backgroundColor: "#D46A6A" }}>
+        <div className="p-6 rounded-lg" style={{ backgroundColor: "#D46A6A" }}>
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-white">Freelancer List</h1>
             <div className="relative">

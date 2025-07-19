@@ -10,8 +10,7 @@ function StatsOverview() {
           Total Client
         </h2>
         <div className="flex items-center gap-2">
-          <span className="text-4xl font-bold text-[#5EAAA8]">500</span>
-          <Users className="w-10 h-10 text-[#e57373]" />
+          <span className="text-4xl font-bold text-[#5EAAA8]">$560</span>
         </div>
       </div>
 
@@ -21,8 +20,7 @@ function StatsOverview() {
           Total Freelancer
         </h2>
         <div className="flex items-center gap-2">
-          <span className="text-4xl font-bold text-[#5EAAA8]">500</span>
-          <Globe className="w-10 h-10 text-[#e57373]" />
+          <span className="text-4xl font-bold text-[#5EAAA8]">$560</span>
         </div>
       </div>
 
@@ -33,10 +31,6 @@ function StatsOverview() {
         </h2>
         <div className="flex items-center gap-2">
           <span className="text-4xl font-bold text-[#5EAAA8]">$560</span>
-          <div className="relative w-10 h-10">
-            <DollarSign className="absolute top-0 left-0 w-7 h-7 text-[#e57373]" />
-            <Coins className="absolute bottom-0 right-0 w-7 h-7 text-[#e57373]" />
-          </div>
         </div>
       </div>
     </div>

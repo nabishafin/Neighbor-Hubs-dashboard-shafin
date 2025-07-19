@@ -172,7 +172,7 @@ const FreelancerPage = () => {
                   setSearchTerm(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="pl-10 pr-4 py-2 border bg-white border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 w-80"
+                className="pl-10 pr-4 py-2 border bg-white   rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 w-80"
               />
             </div>
           </div>
@@ -201,9 +201,9 @@ const FreelancerPage = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className=" divide-y divide-gray-200">
                 {paginatedFreelancers.map((freelancer) => (
-                  <tr key={freelancer.id} className="hover:bg-gray-50">
+                  <tr key={freelancer.id} className="">
                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-gray-900">
                       {freelancer.id}
                     </td>
@@ -232,7 +232,7 @@ const FreelancerPage = () => {
           </div>
 
           {/* Pagination */}
-          <div className="bg-white px-4 py-6 border-t border-gray-200 flex justify-center">
+          <div className=" px-4 py-6 border-t border-gray-200 flex justify-center">
             <nav className="flex items-center space-x-2">
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}

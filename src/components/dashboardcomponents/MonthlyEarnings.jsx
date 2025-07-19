@@ -79,7 +79,7 @@ const Earnings = () => {
       onMouseDown={(e) => e.preventDefault()}
     >
       <div
-        className="p-5 text-white bg-[#D46A6A] outline-none focus:outline-none"
+        className="p-5 rounded-lg text-white bg-[#D46A6A] outline-none focus:outline-none"
         tabIndex={-1}
       >
         Earning

@@ -8,8 +8,7 @@ const EarningStats = () => {
           Total Amount
         </h2>
         <div className="flex items-center gap-2">
-          <DollarSignIcon className="w-10 h-10 text-[#e57373]" />
-          <span className="text-4xl font-bold text-[#5EAAA8]">560</span>
+          <span className="text-4xl font-bold text-[#5EAAA8]">$560</span>
         </div>
       </div>
 
@@ -19,8 +18,7 @@ const EarningStats = () => {
           Withdrawable
         </h2>
         <div className="flex items-center gap-2">
-          <DollarSignIcon className="w-10 h-10 text-[#e57373]" />
-          <span className="text-4xl font-bold text-[#5EAAA8]">560</span>
+          <span className="text-4xl font-bold text-[#5EAAA8]">$560</span>
         </div>
       </div>
 
@@ -30,8 +28,7 @@ const EarningStats = () => {
           Total Earning
         </h2>
         <div className="flex items-center gap-2">
-          <DollarSignIcon className="w-10 h-10 text-[#e57373]" />
-          <span className="text-4xl font-bold text-[#5EAAA8]">560</span>
+          <span className="text-4xl font-bold text-[#5EAAA8]">$560</span>
         </div>
       </div>
     </div>

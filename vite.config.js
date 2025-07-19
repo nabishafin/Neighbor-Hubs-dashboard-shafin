@@ -11,4 +11,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    allowedHosts: ["darling-pangolin-totally.ngrok-free.app"], // ✅ Add this line
+  },
 });

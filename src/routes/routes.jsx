@@ -11,7 +11,7 @@ import ResetPassword from "../pages/auth/ResetPassword";
 
 // Dashboard Pages
 import DashboardOverview from "../pages/dashboardpages/DashboardOverview/DashboardOverview";
-import AllClients from "../pages/dashboardpages/client/AllClients";
+import Neighbor from "@/pages/dashboardpages/Neighbor/Neighbor";
 import Profile from "../pages/dashboardpages/personalinformation/Profile";
 import EditProfile from "../pages/dashboardpages/personalinformation/Editprofile";
 import TermsAndConditions from "../pages/dashboardpages/terms/TermsAndConditions";
@@ -51,7 +51,7 @@ const routes = createBrowserRouter([
     children: [
       { index: true, element: <DashboardOverview /> },
       { path: "notificatons", element: <AllNotifications /> },
-      { path: "clients", element: <AllClients /> },
+      { path: "clients", element: <Neighbor /> },
       { path: "freelancer", element: <Freelancer /> },
       { path: "earning", element: <Earning /> },
 

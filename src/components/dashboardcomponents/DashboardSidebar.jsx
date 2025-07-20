@@ -9,22 +9,22 @@ import {
   LogOut,
   ChevronRight,
   ChevronDown,
-  Menu, // Keep Menu icon for the SheetTrigger
+  Menu,
   User,
   DollarSign,
 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "../../assets/logo.png";
 
-// Utility: classNames
+// Utility to merge class names
 function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-// Sidebar Items (remains unchanged)
+// Sidebar items
 const sidebarItems = [
   {
     title: "Dashboard",
@@ -75,7 +75,7 @@ const sidebarItems = [
   },
 ];
 
-// Logo Section (remains unchanged)
+// Logo Section
 function LogoSection() {
   return (
     <Link to="/dashboard">
@@ -95,9 +95,10 @@ function LogoSection() {
   );
 }
 
-// Sidebar Navigation (will receive onLinkClick prop)
+// Sidebar Navigation
 function SidebarNav({ onLinkClick }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const pathname = location.pathname;
   const [expandedItems, setExpandedItems] = useState([]);
 
@@ -113,8 +114,8 @@ function SidebarNav({ onLinkClick }) {
       <ul className="space-y-1">
         {sidebarItems.map((item) => {
           const isActive = pathname === item.href;
-          const isChildActive = item.children?.some(
-            (child) => pathname === child.href
+          const isChildActive = item.children?.some((child) =>
+            pathname.startsWith(child.href)
           );
           const hasChildren = !!item.children?.length;
           const expanded = isExpanded(item.href);
@@ -151,7 +152,7 @@ function SidebarNav({ onLinkClick }) {
                   >
                     <ul className="space-y-1 mt-1">
                       {item.children.map((child) => {
-                        const isChildActive = pathname === child.href;
+                        const isChildActive = pathname.startsWith(child.href);
                         return (
                           <li key={child.href}>
                             <Link to={child.href} onClick={onLinkClick}>
@@ -198,6 +199,10 @@ function SidebarNav({ onLinkClick }) {
       {/* Log Out Button */}
       <div className="mt-auto pt-4">
         <Button
+          onClick={() => {
+            navigate("/signin");
+            console.log("ok");
+          }}
           variant="ghost"
           className="w-full justify-start gap-3 h-12 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700"
         >
@@ -219,7 +224,7 @@ export function DesktopSidebar() {
   );
 }
 
-// MobileSidebar component - Exported for use in DashboardHeader
+// Mobile Sidebar
 export function MobileSidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const closeSheet = () => setIsOpen(false);
@@ -230,7 +235,7 @@ export function MobileSidebar() {
         <Button
           variant="default"
           size="icon"
-          className="h-10 w-10 rounded-full bg-black  text-white shadow-lg transition-all duration-200 ease-in-out"
+          className="h-10 w-10 rounded-full bg-black text-white shadow-lg transition-all duration-200 ease-in-out"
         >
           <Menu className="h-5 w-5" />
           <span className="sr-only">Open Menu</span>
@@ -244,7 +249,7 @@ export function MobileSidebar() {
   );
 }
 
-// Default export for DashboardSidebar component (now only handles DesktopSidebar)
+// Default export for Desktop Sidebar
 export default function DashboardSidebar() {
   return <DesktopSidebar />;
 }

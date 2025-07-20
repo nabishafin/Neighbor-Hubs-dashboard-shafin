@@ -5,17 +5,20 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Eye, EyeOff } from "lucide-react";
 import logo from "../../assets/signlogo.png";
+import { useNavigate } from "react-router-dom";
 
 const SignInPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberPassword, setRememberPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
     console.log("Form submitted:", { email, password, rememberPassword });
+    navigate("/dashboard");
   };
 
   return (

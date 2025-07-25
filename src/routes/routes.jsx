@@ -13,7 +13,7 @@ import ResetPassword from "../pages/auth/ResetPassword";
 import DashboardOverview from "../pages/dashboardpages/DashboardOverview/DashboardOverview";
 import Neighbor from "@/pages/dashboardpages/Neighbor/Neighbor";
 import Profile from "../pages/dashboardpages/personalinformation/Profile";
-import EditProfile from "../pages/dashboardpages/personalinformation/Editprofile";
+import EditProfile from "../pages/dashboardpages/personalinformation/EditProfile";
 import TermsAndConditions from "../pages/dashboardpages/terms/TermsAndConditions";
 import EditTermsAndConditions from "../pages/dashboardpages/terms/EditTermsAndConditions";
 import PrivacyPolicy from "../pages/dashboardpages/privacypolicy/PrivacyPolicy";
